@@ -1,0 +1,70 @@
+<br/>
+<h1>Users</h1>
+<br/>
+<p><b>Find:</b></p>
+<mat-form-field>
+  <mat-select [(value)]="selected" [placeholder]="selected">
+    <mat-option *ngFor="let option of options" [value]="option.value">
+      {{option.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<input type="text" (input)="onUpdate($event)" class = "capitalize">
+<br/>
+<button (click)="showProfile(this.first)">SEARCH</button>
+<div class="mat-elevation-z8" height="95%">
+  <!--<mat-paginator [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>-->
+  <table mat-table [dataSource]="usersDataSource" matSort>
+    <!-- Name Column -->
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstname}} {{element.lastname}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="businesstype">
+      <th mat-header-cell *matHeaderCellDef> Business Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.Type}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="appstatus">
+      <th mat-header-cell *matHeaderCellDef> App Status </th>
+      <td mat-cell *matCellDef="let element"> {{element.appstatus}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef> Address </th>
+      <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<br/>
+<br/>
+
+<!--<ul *ngIf="users">
+    <li *ngFor="let user of users">
+      <a href="#" routerLink="/list/profile/" (click)=showProfile(user._id)>
+        <p class="name">{{ user.firstname }} {{ user.lastname }}</p>
+      </a>
+      <br/>
+      <p class="details">
+        <b>Business Type:</b> {{ user.Type }}<br/>
+        <b>Application Status:</b> {{ user.appstatus }}<br/>
+        <b>Credit Score:</b> {{ user.creditscore }}<br/>
+        <b>Address:</b> {{ user.Address }}<br/>
+        <b>Email:</b> {{ user.Email }}<br/>
+      </p>
+
+    </li>
+</ul>-->

@@ -1,0 +1,13 @@
+<div *ngIf="data">
+  <ul>
+          <p class="name">{{ data.firstname }} {{ data.lastname }}</p>
+          <br/>
+          <p class="details">
+            <b>Business Type:</b> {{ data.Type }}<br/>
+            <b>Application Status:</b> {{ data.appstatus }}<br/>
+            <b>Credit Score:</b> {{ data.creditscore }}<br/>
+            <b>Email:</b> {{ data.Email }}<br/>
+          </p>
+          <p>{{data._id}}</p>
+  </ul>
+</div>
